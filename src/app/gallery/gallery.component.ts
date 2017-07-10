@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+'use strict';
+
+import { Component, OnChanges } from '@angular/core';
+import { ImageService } from '../image/shared/image.service';
 
 @Component({
   selector: 'app-gallery',
@@ -8,4 +11,9 @@ import { Component } from '@angular/core';
 
 export class GalleryComponent {
   title = 'Various Collection';
+  visibleImages: any[] = [];
+
+  constructor(private imageService: ImageService) {
+    this.visibleImages = this.imageService.getImages();
+  }
 }
